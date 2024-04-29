@@ -5,7 +5,7 @@ namespace mleroi\mailtest;
 /*
 Plugin Name: Mleroi Mail Test
 Description: Send test emails from WordPress
-Version: 1.0.0
+Version: 1.0.1
 Author: mleroi
 */
 
