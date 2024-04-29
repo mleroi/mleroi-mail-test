@@ -67,7 +67,7 @@ if( ! class_exists( 'mleroi\\mailtest\\MailTest' ) ) {
             <?php
         }
 
-        public function fromEmail( $from_email ) {
+        public static function fromEmail( $from_email ) {
             if ( isset( $_POST['from_email'] ) ) {
                 $email = sanitize_email( trim( $_POST['from_email'] ) );
                 if ( !empty( $email ) ) {
@@ -77,7 +77,7 @@ if( ! class_exists( 'mleroi\\mailtest\\MailTest' ) ) {
             return $from_email;
         }
 
-        public function fromName( $from_name ) {
+        public static function fromName( $from_name ) {
             if ( isset( $_POST['from_name'] ) ) {
                 $name = trim( $_POST['from_name'] );
                 if ( !empty( $name ) ) {
