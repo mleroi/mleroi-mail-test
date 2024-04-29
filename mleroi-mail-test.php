@@ -15,6 +15,7 @@ if( ! class_exists( 'mleroi\\mailtest\\MailTest' ) ) {
 
         public static function run() {
             add_action( 'admin_menu', [__CLASS__, 'addMailTestMenu'] );
+            add_action( 'wp_mail_failed', [__CLASS__, 'handleWpMailError'] );
         }
 
         public static function addMailTestMenu() {
@@ -33,13 +34,11 @@ if( ! class_exists( 'mleroi\\mailtest\\MailTest' ) ) {
 
                     add_filter( 'wp_mail_from', [__CLASS__, 'fromEmail'] );
                     add_filter( 'wp_mail_from_name', [__CLASS__, 'fromName'] );
-                    add_action( 'wp_mail_failed', [__CLASS__, 'handleWpMailError'] );
 
                     $feedback['ok'] = wp_mail( $email, 'Test email from ' . get_option( 'siteurl' ), 'This is a test email sent on '. date('Y-m-d H:i:s') );
 
                     remove_filter( 'wp_mail_from', [__CLASS__, 'fromEmail'] );
                     remove_filter( 'wp_mail_from_name', [__CLASS__, 'fromName'] );
-                    remove_filter( 'wp_mail_failed', [__CLASS__, 'handleWpMailError'] );
 
                     $feedback['message'] = $feedback['ok'] ? 'Email sent successfully! Check your email client :)' : 'An error occured: email not sent';
                 } else {
